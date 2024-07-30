@@ -31,7 +31,7 @@ async fn test_200_for_valid_subscription_post_data() {
 
     let body = "name=param&email=param%40gmail.com";
     let response = client
-        .post(&format!("{}/subscription", &test_app.address))
+        .post(&format!("{}/subscriptions", &test_app.address))
         .header("Content-Type", "application/x-www-form-urlencoded")
         .body(body)
         .send()
@@ -62,7 +62,7 @@ async fn test_400_when_subscription_request_lacks_required_data() {
 
     for (bad_body, error_message) in test_cases {
         let response = client
-            .post(&format!("{}/subscription", &test_app.address))
+            .post(&format!("{}/subscriptions", &test_app.address))
             .header("Content-Type", "application/x-www-form-urlencoded")
             .body(bad_body)
             .send()

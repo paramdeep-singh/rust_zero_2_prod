@@ -15,7 +15,7 @@ pub fn run(
         App::new()
             .wrap(TracingLogger::default())
             .route("/health_check", web::get().to(routes::health_check))
-            .route("subscription", web::post().to(routes::subscribe))
+            .route("/subscriptions", web::post().to(routes::subscribe))
             .app_data(db_pool.clone())
     })
     .listen(listener)?
